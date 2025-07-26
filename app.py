@@ -288,7 +288,7 @@ for msg in st.session_state.messages:
         st.write(msg["content"])
     
 if st.session_state.mode == 0:
-    st.image("character.3.png")  
+    st.image("character3.png")  
     
     #st.image("C:/Users/806jh/Downloads/My_project\character.png")       
     start()
