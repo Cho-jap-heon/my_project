@@ -73,9 +73,9 @@ def menu_watching() :
         st.chat_message("assistant").write(response)
 def menu_more_watching():
     if st.session_state.menu == "전체":    #메뉴 출력
-        st.image("C:/Users/806jh/Downloads/My_project/IMG_9213.jpeg")
+        st.image("IMG_9213.jpeg")
     elif st.session_state.menu == "떡볶이":
-        st.image("C:/Users/806jh/Downloads/My_project/main.png")
+        st.image("main.png")
         response = "1-2인분 떡볶이는 토핑 5개중 2개 선택해주셔야 합니다. \n(비엔나, 고구마떡, 메추리알, 수제비, 물만두) "
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
