@@ -80,16 +80,16 @@ def menu_more_watching():
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
     elif st.session_state.menu == "사이드":
-        st.image("C:/Users/806jh/Downloads/My_project/side.png")
+        st.image("side.png")
     elif st.session_state.menu == "주먹밥":
-        st.image("C:/Users/806jh/Downloads/My_project/rice.png")
+        st.image("rice.png")
     elif st.session_state.menu == "튀김":
-        st.image("C:/Users/806jh/Downloads/My_project/fry.png")
+        st.image("fry.png")
     elif st.session_state.menu == "모두":
-        st.image("C:/Users/806jh/Downloads/My_project/fry.png")
-        st.image("C:/Users/806jh/Downloads/My_project/side.png")
-        st.image("C:/Users/806jh/Downloads/My_project/rice.png")
-        st.image("C:/Users/806jh/Downloads/My_project/main.png")
+        st.image("fry.png")
+        st.image("side.png")
+        st.image("rice.png")
+        st.image("main.png")
 def reference():
     if query := st.chat_input("1: 커플 2: 두명 3:패밀리 4: 군단  5: 솔로  6: 처음으로 ") : # 사용자의입력과답변기록과출력
         st.session_state.messages.append({"role": "user", "content": query})
@@ -288,7 +288,7 @@ for msg in st.session_state.messages:
         st.write(msg["content"])
     
 if st.session_state.mode == 0:
-    st.image("C:/Users/806jh/Downloads/My_project\character.3.png")  
+    st.image("character.3.png")  
     
     #st.image("C:/Users/806jh/Downloads/My_project\character.png")       
     start()
