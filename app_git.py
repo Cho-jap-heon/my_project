@@ -7,12 +7,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'code'))
 import streamlit as st
 import pandas as pd
 from streamlit_chat import message
-from code.start import start
-from code.menu_watching import menu_watching
-from code.reference import reference
-from code.menu_more_watching import menu_more_watching
-from code.ddk_select import ddk_select
-from code.order_start import order_start
+from code_dt.start import start
+from code_dt.menu_watching import menu_watching
+from code_dt.reference import reference
+from code_dt.menu_more_watching import menu_more_watching
+from code_dt.ddk_select import ddk_select
+from code_dt.order_start import order_start
 BASE_PATH = "C:/Users/806jh/Desktop/voice_files"
 
 df= pd.DataFrame({
