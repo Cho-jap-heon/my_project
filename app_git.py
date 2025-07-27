@@ -42,7 +42,7 @@ elif st.session_state.mode == 1:
     menu_watching()
         
 elif st.session_state.mode == 3:
-    st.image("character_ref.png")   
+    #st.image("character_ref.png")   
     reference()
 elif st.session_state.mode == 2:  
     order_start()
