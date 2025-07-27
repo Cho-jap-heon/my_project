@@ -1,6 +1,5 @@
 streamlit
 streamlit_chat
-<<<<<<< HEAD
-=======
+
 pandas
->>>>>>> a106963 (모듈 구조로 리팩토링 및 requirements.txt 추가)
+
