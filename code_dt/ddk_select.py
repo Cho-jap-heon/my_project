@@ -124,4 +124,6 @@ def ddk_select():
         response = "떡볶이 선택 완료. 주문을 저장할게요."
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
-        st.rerun()    
+        
+
+
