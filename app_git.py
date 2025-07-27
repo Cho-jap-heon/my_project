@@ -251,15 +251,15 @@ def ddk_select():
         response = "치즈선택. 1개당 3500원입니다."
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
-        menu_options = ['선택해주세요','치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
-        selected = st.selectbox("추가토핑 선택", menu_options, key="menu_selectbox")
+        cs_options = ['선택해주세요','치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
+        selected = st.selectbox("추가토핑 선택", cs_options, key="cs_selectbox")
         if selected != '선택해주세요':
             if selected == '치즈추가 X':
                 st.session_state.order = 4
                 st.rerun()
             st.session_state.selected_menu = selected
             st.write(f"{selected}메뉴 선택!")
-            st.session_state.messages.append({"role": "assistant", "content": f"{selected}메뉴 선택"})
+            st.session_state.messages.append({"role": "assistant", "content": f"{selected}치즈 선택"})
             st.chat_message("assistant").write(f"{selected}메뉴 선택")
 
             # order를 다음 단계로 진행하고 rerun
