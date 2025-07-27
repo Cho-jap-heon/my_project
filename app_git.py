@@ -1,4 +1,3 @@
-
 # cd C:\Users\806jh\Downloads\My_project&&streamlit run app.py
 #from gtts import gTTS
 #import os
@@ -233,7 +232,7 @@ def ddk_select():
         response = "이번엔 1-2인분 떡볶이의 추가 토핑을 선택해주세요."
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
-        menu_options = ['선택해주세요','토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','고구마떡 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)','떡 추가','오뎅 추가']
+        menu_options = ['선택해주세요','토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','고구마떡 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)']
         selected = st.selectbox("추가토핑 선택", menu_options, key="menu_selectbox")
         if selected != '선택해주세요':
             if selected == '토핑추가 X':
@@ -252,7 +251,7 @@ def ddk_select():
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
         cs_options = ['선택해주세요','치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
-        selected = st.selectbox("추가토핑 선택", cs_options, key="cs_selectbox")
+        selected = st.selectbox("추가치즈 선택", cs_options, key="menu_selectbox")
         if selected != '선택해주세요':
             if selected == '치즈추가 X':
                 st.session_state.order = 4
@@ -326,4 +325,3 @@ elif st.session_state.mode == 2:
 menu_more_watching()                 
 
     
-
