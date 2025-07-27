@@ -1,8 +1,8 @@
 # cd C:\Users\806jh\Downloads\My_project&&streamlit run app.py
-
 import streamlit as st
 import pandas as pd
 from streamlit_chat import message
+
 BASE_PATH = "C:/Users/806jh/Desktop/voice_files"
 def start():
     if query := st.chat_input("무엇을 도와드릴까요? 1: 메뉴 2: 주문 3:추천 4:초기화 ") : # 사용자의입력과답변기록과출력
@@ -91,6 +91,7 @@ def reference():
         st.session_state.messages.append({"role": "user", "content": query})
         st.chat_message("user").write(query)
         if query=="메뉴" or query=="1":
+
             
             response = "1-2인분 세트. "
             
@@ -135,7 +136,6 @@ def order_start():
         if query=="1":     
             st.session_state.order=0
 def ddk_select():
-        
     if st.session_state.order == 0:
         spicy_options = ['선택해주세요', '부상', '부상+', '중상', '혼수상태', '사망']
         selected = st.selectbox("맵기 선택", spicy_options, key="spicy_selectbox")
@@ -222,6 +222,7 @@ def ddk_select():
         response = "이번엔 1-2인분 떡볶이의 추가 토핑을 선택해주세요."
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
+
         menu_options = ['선택해주세요','토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','고구마떡 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)']
         selected = st.selectbox("추가토핑 선택", menu_options, key="menu_selectbox")
         if selected != '선택해주세요':
@@ -240,6 +241,7 @@ def ddk_select():
         response = "치즈선택. 1개당 3500원입니다."
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
+
         cs_options = ['선택해주세요','치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
         selected = st.selectbox("추가치즈 선택", cs_options, key="menu_selectbox")
         if selected != '선택해주세요':
@@ -248,6 +250,7 @@ def ddk_select():
                 st.rerun()
             st.session_state.selected_menu = selected
             st.write(f"{selected}메뉴 선택!")
+
             st.session_state.messages.append({"role": "assistant", "content": f"{selected}치즈 선택"})
             st.chat_message("assistant").write(f"{selected}메뉴 선택")
 
@@ -259,6 +262,7 @@ def ddk_select():
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
         st.rerun()    
+
 df= pd.DataFrame({
     'first column': [1, 2, 3, 4],
     'second column': [10, 20, 30, 40]
@@ -277,6 +281,7 @@ for msg in st.session_state.messages:
         st.write(msg["content"])
     
 if st.session_state.mode == 0:
+
     st.image("character3.png")      
     start()
 
