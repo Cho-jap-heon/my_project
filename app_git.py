@@ -1,4 +1,7 @@
 # cd C:\Users\806jh\Downloads\My_project&&streamlit run app.py
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'code'))
 
 
 import streamlit as st
