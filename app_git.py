@@ -1,12 +1,8 @@
 # cd C:\Users\806jh\Downloads\My_project&&streamlit run app.py
-#from gtts import gTTS
-#import os
+
 import streamlit as st
 import pandas as pd
 from streamlit_chat import message
-#from datetime import datetime
-#from playsound import playsound
-# 저장 디렉토리 설정
 BASE_PATH = "C:/Users/806jh/Desktop/voice_files"
 def start():
     if query := st.chat_input("무엇을 도와드릴까요? 1: 메뉴 2: 주문 3:추천 4:초기화 ") : # 사용자의입력과답변기록과출력
@@ -95,25 +91,20 @@ def reference():
         st.session_state.messages.append({"role": "user", "content": query})
         st.chat_message("user").write(query)
         if query=="메뉴" or query=="1":
-            #st.session_state.menu="떡볶이"
-            #st.session_state.mode =1
+            
             response = "1-2인분 세트. "
             
         elif query=="2":
-            #st.session_state.mode =1
-            #st.session_state.menu="주먹밥"
+            
             response ="응세트"
         elif query=="3": 
-            #st.session_state.mode =1
-            #st.session_state.menu="사이드"
+            
             response = "급세트"
         elif query=="4": 
-            #st.session_state.mode =1
-            #st.session_state.menu="튀김"
+           
             response = "4명당 실세트"
         elif query=="5": 
-            #st.session_state.mode =1
-            #st.session_state.menu="모두"
+           
             response = "1-2인분 떡볶이"    
         elif query=="6": 
            
@@ -144,8 +135,7 @@ def order_start():
         if query=="1":     
             st.session_state.order=0
 def ddk_select():
-        #status = st.radio('맵기 선택', ['부상', '부상+','중상','혼수상태','사망','선택완료'])
-        # 사용법
+        
     if st.session_state.order == 0:
         spicy_options = ['선택해주세요', '부상', '부상+', '중상', '혼수상태', '사망']
         selected = st.selectbox("맵기 선택", spicy_options, key="spicy_selectbox")
@@ -269,26 +259,6 @@ def ddk_select():
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("assistant").write(response)
         st.rerun()    
-# 디렉토리 없으면 생성
-#if not os.path.exists(BASE_PATH):
-    #os.makedirs(BASE_PATH)
-
-# 고유 파일명 생성 함수
-#def unique_filename(prefix):
-    #timestamp = datetime.now().strftime('%H%M%S')
-    #return os.path.join(BASE_PATH, f"{prefix}_{timestamp}.mp3")
-
-# 재생 안전 처리 함수
-#def safe_play(file_path):
-    #try:
-        #playsound(file_path)
-    #except Exception as e:
-        #print(f"재생 중 오류 발생: {e}")
-
-#hello="무엇을도와드릴까요"
-#hello_file = unique_filename("hello")
-#gTTS(text=hello, lang='ko').save(hello_file)
-
 df= pd.DataFrame({
     'first column': [1, 2, 3, 4],
     'second column': [10, 20, 30, 40]
@@ -307,9 +277,7 @@ for msg in st.session_state.messages:
         st.write(msg["content"])
     
 if st.session_state.mode == 0:
-    st.image("character3.png")  
-    
-    #st.image("C:/Users/806jh/Downloads/My_project\character.png")       
+    st.image("character3.png")      
     start()
 
 elif st.session_state.mode == 1:  
