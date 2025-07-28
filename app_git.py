@@ -13,7 +13,7 @@ from code_dt.reference import reference
 from code_dt.menu_more_watching import menu_more_watching
 from code_dt.ddk_select import ddk_select
 from code_dt.order_start import order_start
-BASE_PATH = "C:/Users/806jh/Desktop/voice_files"
+
 
 df= pd.DataFrame({
     'first column': [1, 2, 3, 4],
@@ -42,7 +42,7 @@ elif st.session_state.mode == 1:
     menu_watching()
         
 elif st.session_state.mode == 3:
-    st.image("character_ref.png")   
+   
     reference()
 elif st.session_state.mode == 2:  
     order_start()
