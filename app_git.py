@@ -34,7 +34,7 @@ for msg in st.session_state.messages:
     
 if st.session_state.mode == 0:
 
-    st.image("character3.png")      
+    st.image("img_dt/character3.png")      
     start()
 
 elif st.session_state.mode == 1:  
