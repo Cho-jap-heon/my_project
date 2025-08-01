@@ -42,7 +42,7 @@ elif st.session_state.mode == 1:
     menu_watching()
         
 elif st.session_state.mode == 3:
-   
+
     reference()
 elif st.session_state.mode == 2:  
     order_start()
