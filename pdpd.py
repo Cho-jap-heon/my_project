@@ -1,4 +1,4 @@
-
+#  cd C:\Users\806jh\Downloads\My_project
 import streamlit as st
 import pandas as pd
 from streamlit_chat import message
@@ -11,12 +11,12 @@ from code_dt.order_start import order_start
 
 
 df= pd.DataFrame({
-    'order': [1, 2, 3, 4,5,6,7,8,9,10],
-    'number': [1,2,3,4,5,6,7,8,9,10],
-    'price':[1,2,3,4,5,6,7,8,9,10]
+    'ddk_order': ['1-2','2-3', '치즈', 4,5,6,7,8,9,10],
+    'ddk_number': [1,2,3,4,5,6,7,8,9,10],
+    'ddk_price':[1,2,3,4,5,6,7,8,9,10]
 })
-df['output']=df['order']*df['number']
-df.loc[2, 'price'] = 3000
+df['output']=df['ddk_order']*df['ddk_number']
+df.loc[4, 'ddk_price'] = 3000
 
 st.write(df)
 
