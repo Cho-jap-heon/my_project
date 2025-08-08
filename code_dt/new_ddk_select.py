@@ -59,7 +59,7 @@ def new_ddk_select():
             selected = st.multiselect(step["title"], ['선택해주세요'] + step["options"], key=f"select_{step['name']}")
 
             # 선택 완료 시 상태 저장 후 다음 단계로 이동
-            if selected != '선택해주세요':
+            if selected == '선택해주세요':
                 st.session_state[step["name"]] = selected
                 st.write(f"{selected} 선택됨!")
                 st.session_state.messages.append({"role": "assistant", "content": f"{selected} 선택"})
