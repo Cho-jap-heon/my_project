@@ -40,7 +40,7 @@ order_steps = [
         "options": ['치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
     },
 ]
-def ddk_select():
+def new_ddk_select():
     current_order = st.session_state.get("order", 0)
 
     for i, step in enumerate(order_steps):
