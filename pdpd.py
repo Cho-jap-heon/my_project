@@ -9,7 +9,9 @@ from code_dt.menu_more_watching import menu_more_watching
 from code_dt.ddk_select import ddk_select
 from code_dt.order_start import order_start
 
-
+# 만들어야하는거 종료되거나 리셋하면 행렬 전부 초기화, 가격 개수 메뉴 행렬
+# 딕셔너리 형태로 1-2인분은 9500이렇게 할지, 1-2:9500이런식으로 하고 거기다 로입설처럼 : 이후로 잘라서 메꾸기 이경우 if문을 많이 써야하나, 그냥 행렬로 열 구분해서 만들기
+# 기본 가격들과 메뉴 각각을 전부 따로 저장을 해놓고 새로운 행렬에 그것들 복사하기 vs 기본 모드 행렬에서 개수들 전부 0으로 초기화 > 주문될때마다 1씩 추가
 df= pd.DataFrame({
     'ddk_order': ['1-2','2-3', '치즈', 4,5,6,7,8,9,10],
     'ddk_number': [1,2,3,4,5,6,7,8,9,10],
