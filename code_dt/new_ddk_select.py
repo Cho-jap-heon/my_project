@@ -47,7 +47,7 @@ def new_ddk_select():
         # 조건이 있다면 검사
         if "condition" in step and not step["condition"](st.session_state):
             st.session_state.order = current_order + 1
-            continue
+            st.rerun()
         if current_order != i:
             continue
 
