@@ -78,6 +78,6 @@ def new_ddk_select():
             st.rerun()
         break
 
-if st.session_state.get("order", 0) >= len(order_steps):
-    st.chat_message("assistant").write("✅ 주문이 완료되었습니다!")
-    st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
+    if st.session_state.get("order", 0) >= len(order_steps):
+        st.chat_message("assistant").write("✅ 주문이 완료되었습니다!")
+        st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
