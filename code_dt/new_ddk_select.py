@@ -44,23 +44,40 @@ def new_ddk_select():
     current_order = st.session_state.get("order", 0)
 
     for i, step in enumerate(order_steps):
-        # 조건이 있다면 검사
+        # 조건이 있다면, 조건에 맞지 않으면 그냥 건너뜀
         if "condition" in step and not step["condition"](st.session_state):
-            st.session_state.order = current_order + 1
-            st.rerun()
-        if current_order != i:
             continue
 
+        # 현재 순서가 아닌 step이면 건너뜀
+        if i != current_order:
+            continue
+
+        # 메시지 출력
         st.session_state.messages.append({"role": "assistant", "content": step["title"]})
         st.chat_message("assistant").write(step["title"])
+
+        # 선택지 표시
         selected = st.selectbox(step["title"], ['선택해주세요'] + step["options"], key=f"select_{step['name']}")
 
+        # 선택 완료 시 상태 저장 후 다음 단계로 이동
         if selected != '선택해주세요':
             st.session_state[step["name"]] = selected
             st.write(f"{selected} 선택됨!")
             st.session_state.messages.append({"role": "assistant", "content": f"{selected} 선택"})
             st.chat_message("assistant").write(f"{selected} 선택")
 
-            st.session_state.order = current_order + 1
+            # 다음 조건 맞는 step 찾기
+            for j in range(i + 1, len(order_steps)):
+                if "condition" not in order_steps[j] or order_steps[j]["condition"](st.session_state):
+                    st.session_state.order = j
+                    break
+            else:
+                # 모든 step 완료
+                st.session_state.order = len(order_steps)
+
             st.rerun()
         break
+
+if st.session_state.get("order", 0) >= len(order_steps):
+    st.chat_message("assistant").write("✅ 주문이 완료되었습니다!")
+    st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
