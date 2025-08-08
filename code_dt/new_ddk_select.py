@@ -61,24 +61,26 @@ def new_ddk_select():
         # 선택지 표시
         if step.get("multi", False):
             selected = st.multiselect(step["title"], step["options"], key=f"select_{step['name']}")
-            if selected :
+            
+            if st.button("✅ 선택 완료", key=f"confirm_{step['name']}") and selected:
                 st.session_state[step["name"]] = selected
                 st.write(f"{selected} 선택됨!")
                 st.session_state.messages.append({"role": "assistant", "content": f"{selected} 선택"})
                 st.chat_message("assistant").write(f"{selected} 선택")
 
+                st.session_state["extra"] = selected
+
                 # 다음 조건 맞는 step 찾기
                 for j in range(i + 1, len(order_steps)):
                     if "condition" not in order_steps[j] or order_steps[j]["condition"](st.session_state):
-                        st.session_state["extra"] = selected
                         st.session_state.order = j
                         break
                 else:
-                    # 모든 step 완료
                     st.session_state.order = len(order_steps)
 
                 st.rerun()
                 break
+
         else:
             selected = st.selectbox(step["title"], ['선택해주세요'] + step["options"], key=f"select_{step['name']}")
             # 선택 완료 시 상태 저장 후 다음 단계로 이동
