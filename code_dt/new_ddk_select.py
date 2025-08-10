@@ -103,13 +103,13 @@ def new_ddk_select():
 
                 st.rerun()
                 break
-    selected = st.selectbox("토핑 선택", select_steps, key="order_select")
+    selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
             # 선택 완료 시 상태 저장 후 다음 단계로 이동
-    if selected != '선택해주세요':
-        st.session_state[step["name"]] = selected
-        st.write(f"{selected} 선택됨!")
-        st.session_state.messages.append({"role": "assistant", "content": f"{selected} 선택"})
-        st.chat_message("assistant").write(f"{selected} 선택")
+    if selected_order != '선택해주세요':
+        st.session_state[step["name"]] = selected_order
+        st.write(f"{selected_order} 선택됨!")
+        st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
+        st.chat_message("assistant").write(f"{selected_order} 선택")
         
             
     if st.session_state.get("order", 0) >= len(order_steps):
