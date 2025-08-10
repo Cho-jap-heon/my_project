@@ -47,7 +47,7 @@ order_steps = [
 select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
 def new_ddk_select():
     current_order = st.session_state.get("order", 0)
-    step=[]
+    order_steps=[]
     for i, step in enumerate(order_steps):
         # 조건이 있다면, 조건에 맞지 않으면 그냥 건너뜀
         if "condition" in step and not step["condition"](st.session_state):
