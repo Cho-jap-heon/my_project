@@ -45,6 +45,7 @@ elif st.session_state.mode == 3:
     reference()
 elif st.session_state.mode == 2:  
     order_start()
+    
     new_ddk_select()
             
 menu_more_watching()                 
