@@ -113,7 +113,7 @@ def new_ddk_select():
         
             
     if st.session_state.get("order", 0) >= len(order_steps):
-        st.chat_message("assistant").write("✅ 주문이 완료되었습니다!")
+        st.chat_message("assistant").write("✅ssss 주문이 완료되었습니다!")
         st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
         selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
             # 선택 완료 시 상태 저장 후 다음 단계로 이동
