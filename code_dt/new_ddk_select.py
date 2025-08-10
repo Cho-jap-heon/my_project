@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 order_steps = [
     {
-        "name": "맵기", 
+        "name": "spicy", 
         "title": "맵기 선택", 
         "options": ['부상', '부상+', '중상', '혼수상태', '사망']
     },
@@ -44,10 +44,10 @@ order_steps = [
     },
     
 ]
-select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
+
 def new_ddk_select():
     current_order = st.session_state.get("order", 0)
-    order_steps=[]
+    #order_steps=[]
     for i, step in enumerate(order_steps):
         # 조건이 있다면, 조건에 맞지 않으면 그냥 건너뜀
         if "condition" in step and not step["condition"](st.session_state):
@@ -62,7 +62,8 @@ def new_ddk_select():
         st.chat_message("assistant").write(step["title"])
         # 선택지 표시
         if step.get("multi", False):
-            selected = st.multiselect(step["title"], step["options"], key=f"select_{step['name']}")
+            
+            selected = st.multiselect(step["title"], step["options"],key=f"select_{i}_{step['name']}")
             
             if st.button("✅ 선택 완료", key=f"confirm_{step['name']}") and selected:
                 st.session_state[step["name"]] = selected
@@ -84,7 +85,7 @@ def new_ddk_select():
                 break
 
         else:
-            selected = st.selectbox(step["title"], ['선택해주세요'] + step["options"], key=f"select_{step['name']}")
+            selected = st.selectbox(step["title"], ['선택해주세요'] + step["options"],key=f"select_{i}_{step['name']}")
             # 선택 완료 시 상태 저장 후 다음 단계로 이동
             if selected != '선택해주세요':
                 st.session_state[step["name"]] = selected
@@ -103,23 +104,22 @@ def new_ddk_select():
 
                 st.rerun()
                 break
-    selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
-            # 선택 완료 시 상태 저장 후 다음 단계로 이동
-    if selected_order != '선택해주세요':
-        st.session_state[step["name"]] = selected_order
-        st.write(f"{selected_order} 선택됨!")
-        st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
-        st.chat_message("assistant").write(f"{selected_order} 선택")
+            
+            
+
         
             
     if st.session_state.get("order", 0) >= len(order_steps):
-        st.chat_message("assistant").write("✅ssss 주문이 완료되었습니다!")
-        st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
+        select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
         selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
-            # 선택 완료 시 상태 저장 후 다음 단계로 이동
-    selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
-    if selected_order != '선택해주세요':
-        st.session_state[step["name"]] = selected_order
-        st.write(f"{selected_order} 선택됨!")
-        st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
-        st.chat_message("assistant").write(f"{selected_order} 선택")
+                # 선택 완료 시 상태 저장 후 다음 단계로 이동
+        if selected_order != '선택해주세요':
+            if selected_order=='주문하기':
+                st.write(f"{selected_order} 선택됨!")
+                st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
+                st.chat_message("assistant").write(f"{selected_order} 선택")
+                st.chat_message("assistant").write("✅주문이 완료되었습니다!")
+                st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
+        
+    
+    
