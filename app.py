@@ -14,7 +14,6 @@ from code_dt.menu_more_watching import menu_more_watching
 from code_dt.new_ddk_select import new_ddk_select
 from code_dt.order_start import order_start
 
-
 df= pd.DataFrame({
     'first column': [1, 2, 3, 4],
     'second column': [10, 20, 30, 40]
