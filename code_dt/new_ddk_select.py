@@ -2,47 +2,49 @@ import streamlit as st
 from streamlit_chat import message
 order_steps = [
     {
-        "name": "spicy", 
+        "name": "맵기", 
         "title": "맵기 선택", 
         "options": ['부상', '부상+', '중상', '혼수상태', '사망']
     },
     {
-        "name": "menu", 
+        "name": "떡볶이", 
         "title": "떡볶이 선택", 
         "options": ['응떡2-3인분', '반반2-3인분', '응오2-3인분', '떡볶이1-2인분']
     },
     {
-        "name": "topping1", 
+        "name": "기본토핑1", 
         "title": "기본 토핑 1", 
         "options": ['수제비(추천)', '메추리알', '비엔나', '고구마떡', '물만두(추천)'],
         "condition": lambda session: session.get("menu") == '떡볶이1-2인분'
     },
     {
-        "name": "topping2", 
+        "name": "기본토핑2", 
         "title": "기본 토핑 2", 
         "options": ['수제비(추천)', '메추리알', '비엔나', '고구마떡', '물만두(추천)'],
         "condition": lambda session: session.get("menu") == '떡볶이1-2인분'
     },
     {
-        "name": "extra2-3", 
+        "name": "2-3인분_추가토핑", 
         "title": "추가 토핑", 
         "options": ['토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','고구마떡 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)','떡 추가','오뎅 추가'],
         "multi": True,
         "condition": lambda session: session.get("menu") != '떡볶이1-2인분'
     },
     {
-        "name": "extra1-2", 
+        "name": "1-2인분_추가토핑", 
         "title": "추가 토핑", 
         "options": ['토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','고구마떡 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)'],
         "condition": lambda session: session.get("menu") == '떡볶이1-2인분',
         "multi": True
     },
     {
-        "name": "cheese", 
+        "name": "치즈", 
         "title": "치즈 선택", 
         "options": ['치즈추가 X','치즈 1개','치즈 2개','치즈 3개','치즈 4개']
     },
+    
 ]
+select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
 def new_ddk_select():
     current_order = st.session_state.get("order", 0)
 
@@ -101,7 +103,15 @@ def new_ddk_select():
 
                 st.rerun()
                 break
-
+    selected = st.selectbox("토핑 선택", select_steps, key="order_select")
+            # 선택 완료 시 상태 저장 후 다음 단계로 이동
+    if selected != '선택해주세요':
+        st.session_state[step["name"]] = selected
+        st.write(f"{selected} 선택됨!")
+        st.session_state.messages.append({"role": "assistant", "content": f"{selected} 선택"})
+        st.chat_message("assistant").write(f"{selected} 선택")
+        
+            
     if st.session_state.get("order", 0) >= len(order_steps):
         st.chat_message("assistant").write("✅ 주문이 완료되었습니다!")
         st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
