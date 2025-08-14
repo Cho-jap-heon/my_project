@@ -121,10 +121,13 @@ def new_ddk_select():
                 st.chat_message("assistant").write("✅주문이 완료되었습니다!")
                 st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
             if selected_order=='초기화':
-                current_order=0
-                selected_order=[]
-                step=[]
+                  
+            # 주문 관련 키 제거
+                for step in order_steps:
+                    if step["name"] in st.session_state:
+                        del st.session_state[step["name"]]
+                st.session_state.order = 0
+                st.session_state.messages = []
                 st.rerun()
-            
-    
+                
     
