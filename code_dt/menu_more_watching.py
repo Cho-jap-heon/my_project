@@ -5,7 +5,7 @@ def menu_more_watching():
         st.image("img_dt/IMG_9213.jpeg")
     elif st.session_state.menu == "떡볶이":
         st.image("img_dt/main.png")
-        response = "1-2인분 떡볶이는 토핑 5개중 2개 선택해주셔야 합니다. \n(비엔나, 고구마떡, 메추리알, 수제비, 물만두) "
+        response = "1-2인분 떡볶이는 토핑 5개중 2개 선택해주셔야 합니다. \n(비엔나, 메추리알, 수제비, 물만두) "
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.chat_message("img_dt/assistant").write(response)
     elif st.session_state.menu == "사이드":
