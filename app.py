@@ -18,9 +18,12 @@ df= pd.DataFrame({
     'first column': [1, 2, 3, 4],
     'second column': [10, 20, 30, 40]
 })
+print("DEBUG type:", type(st.session_state))
+print("DEBUG value:", st.session_state)
+
 st.title('★주문의 요정★')
 if "menu" not in st.session_state:
-    st.session_state['menu'] = 0
+    st.session_state.menu = 0
 
 if "messages" not in st.session_state:
       
