@@ -25,14 +25,14 @@ order_steps = [
     },
     {
         "name": "2-3인분_추가토핑", 
-        "title": "추가 토핑", 
+        "title": "추가 토핑23", 
         "options": ['토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)','떡 추가','오뎅 추가'],
         "multi": True,
         "condition": lambda session: session.get("menu") != '떡볶이1-2인분'
     },
     {
         "name": "1-2인분_추가토핑", 
-        "title": "추가 토핑", 
+        "title": "추가 토핑12", 
         "options": ['토핑추가 X','수제비 (10개)','집채어묵 (3개)','물만두 (6개)','비엔나소시지 (6개)','메추리알 (6개)','계란 (2개)'],
         "condition": lambda session: session.get("떡볶이") == '떡볶이1-2인분',
         "multi": True
