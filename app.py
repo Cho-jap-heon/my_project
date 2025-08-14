@@ -20,7 +20,7 @@ df= pd.DataFrame({
 })
 st.title('★주문의 요정★')
 if "menu" not in st.session_state:
-    st.session_state.menu = 0
+    st.session_state['menu'] = 0
 
 if "messages" not in st.session_state:
       
