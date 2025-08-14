@@ -123,7 +123,7 @@ def new_ddk_select():
             if selected_order=='초기화':
                 selected_order=[]
                 #step=[]
-                st.rerun()
+                #st.rerun()
             
     
     
