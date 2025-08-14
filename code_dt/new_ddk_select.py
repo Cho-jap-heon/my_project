@@ -122,7 +122,7 @@ def new_ddk_select():
                 st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
             if selected_order=='초기화':
                 selected_order=[]
-                step=[]
+                #step=[]
                 st.rerun()
             
     
