@@ -121,25 +121,24 @@ def new_ddk_select():
 
         
             
-    if st.session_state.get("order", 0) >= len(order_steps):
-        select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
-        selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
-                # 선택 완료 시 상태 저장 후 다음 단계로 이동
-        if selected_order != '선택해주세요':
-            if selected_order=='주문하기':
-                st.write(f"{selected_order} 선택됨!")
-                st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
-                st.chat_message("assistant").write(f"{selected_order} 선택")
-                st.chat_message("assistant").write("✅주문이 완료되었습니다!")
-                st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
-            if selected_order=='초기화':
-                  
-            # 주문 관련 키 제거
-                for step in order_steps:
-                    if step["name"] in st.session_state:
-                        del st.session_state[step["name"]]
-                st.session_state.order = 0
-                st.session_state.messages = []
-                st.rerun()
+    #if st.session_state.get("order", 0) >= len(order_steps):
+    select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
+    selected_order = st.selectbox("주문_결정", select_steps, key="order_select")
+            # 선택 완료 시 상태 저장 후 다음 단계로 이동
+    if selected_order != '선택해주세요':
+        if selected_order=='주문하기':
+            st.write(f"{selected_order} 선택됨!")
+            st.session_state.messages.append({"role": "assistant", "content": f"{selected_order} 선택"})
+            st.chat_message("assistant").write(f"{selected_order} 선택")
+            st.chat_message("assistant").write("✅주문이 완료되었습니다!")
+            st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
+        if selected_order=='초기화':
                 
-    
+        # 주문 관련 키 제거
+            for step in order_steps:
+                if step["name"] in st.session_state:
+                    del st.session_state[step["name"]]
+            st.session_state.order = 0
+            st.session_state.messages = []
+            st.rerun()
+            
