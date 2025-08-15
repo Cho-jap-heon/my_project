@@ -119,7 +119,7 @@ def new_ddk_select():
                 break
             
     if st.session_state.get("order", 0) >= len(order_steps):
-        select_steps={'선택해주세요','주문하기','메뉴_추가','초기화'}
+        select_steps={'선택해주세요','메뉴_추가','초기화','주문하기'}
         selected_orders = st.selectbox("주문_결정", select_steps, key="order_select")
                 # 선택 완료 시 상태 저장 후 다음 단계로 이동
         if selected_orders != '선택해주세요':
