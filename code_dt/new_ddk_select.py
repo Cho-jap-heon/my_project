@@ -140,4 +140,5 @@ def new_ddk_select():
                 st.rerun()
             if selected_orders=='메뉴_추가':    
                 st.session_state.order = 0
+                st.write({step["name"]: st.session_state.get(step["name"]) for step in order_steps if step["name"] in st.session_state})
                 st.rerun()
