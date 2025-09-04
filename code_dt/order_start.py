@@ -21,6 +21,7 @@ def order_start():
         if query=="0":     
             st.session_state.order=0
             new_set_select()
+            
         if query=="1":     
             st.session_state.order=0
             new_ddk_select()
