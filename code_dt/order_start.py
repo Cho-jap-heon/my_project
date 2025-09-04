@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_chat import message
 from code_dt.new_ddk_select import new_ddk_select
+from code_dt.new_set import new_set_select
 def order_start():
     if "order" not in st.session_state:
         st.session_state.order = 0.5
@@ -17,6 +18,10 @@ def order_start():
             response = "처음으로 돌아갈게요"
             st.session_state.mode=0  
             st.rerun()
+        if query=="0":     
+            st.session_state.order=0
+            new_set_select()
         if query=="1":     
             st.session_state.order=0
+            new_ddk_select()
             
