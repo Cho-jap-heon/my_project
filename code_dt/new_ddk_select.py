@@ -117,7 +117,7 @@ def new_ddk_select():
 
                 st.rerun()
                 break
-            
+    print('sss')       
     if st.session_state.get("order", 0) >= len(order_steps):
         select_steps={'선택해주세요','선택해주세요','선택해주세요','선택해주세요','메뉴_추가','초기화','주문하기'}
         selected_orders = st.selectbox("주문_결정", select_steps, key="order_select")
