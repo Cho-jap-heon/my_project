@@ -22,6 +22,6 @@ def new_set_select():
             st.chat_message("assistant").write(f"{selected}맛 선택")
 
             # order를 다음 단계로 진행하고 rerun
-            st.session_state.order = 1
+            st.session_state.order=0
+            new_ddk_select()
             st.rerun()
-    new_ddk_select()
